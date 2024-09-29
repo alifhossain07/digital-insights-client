@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import "./index.css";
 import { ThemeProvider } from "@material-tailwind/react";
-import routes from "./Routes/Route";
+import routes from "./Routes/Routes";
 import AuthProvider from "./Providers/AuthProvider";
 
 createRoot(document.getElementById("root")).render(
