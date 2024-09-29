@@ -23,13 +23,13 @@ const Login = () => {
       <div className="flex center justify-around mx-auto">
         
         <div>
-        <div className="space-y-6 mt-24 ">
+        <div className="space-y-6 mt-32 ">
         <h1 className="uppercase text-4xl py-8 font-bold text-[#FFD819] ">
                 Sign in to your account
               </h1>
           <p className="text-2xl ">Get Tech Insights For Everyday Life</p>
         </div>
-        <p className="text-xl  mt-48 font-light text-gray-500 dark:text-gray-400">
+        <p className="text-xl  mt-32 font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
                   <span className="font-bold text-yellow-500 text-lg">
                     <Link to="/register"> Sign up</Link>
@@ -39,7 +39,7 @@ const Login = () => {
 
          
         
-        <div className="flex flex-col  w-4/12 py-20  mb-20  ">
+        <div className="flex flex-col  w-4/12 py-20  mb-7  ">
           <div className=" bg-white rounded-lg shadow-xl  ">
             <div className="p-8 space-y-4  ">
               

@@ -25,7 +25,7 @@ const Register = () => {
             </h1>
             <p className="text-2xl">Get Tech Insights For Everyday Life</p>
           </div>
-          <p className="text-xl mt-48 font-light text-gray-500 dark:text-gray-400">
+          <p className="text-xl mt-32 font-light text-gray-500 dark:text-gray-400">
             Already have an account?{" "}
             <span className="font-bold text-yellow-500 text-lg">
               <Link to="/login"> Login</Link>
@@ -33,7 +33,7 @@ const Register = () => {
           </p>
         </div>
 
-        <div className="flex flex-col w-5/12 py-20 mb-20">
+        <div className="flex flex-col w-5/12 py-20 ">
           <div className="bg-white rounded-lg shadow-xl">
             <div className="p-8 space-y-4">
               <form className="space-y-10" onSubmit={handleSubmit(onSubmit)}>

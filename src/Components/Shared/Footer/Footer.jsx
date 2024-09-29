@@ -11,16 +11,17 @@ import {
 const Footer = () => {
   return (
     <div>
-      <FlowbiteFooter container>
-        <div className="w-full">
-          <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-            <div>
-              <FlowbiteFooter.Brand
-                href="https://flowbite.com"
-                src="https://flowbite.com/docs/images/logo.svg"
-                alt="Flowbite Logo"
+      <FlowbiteFooter className="bg-gray-200" container>
+        <div className="w-full ml-14 mr-14">
+          <div className="flex w-full justify-between items-center  ">
+            <div className="">
+              <FlowbiteFooter.Brand className=""
+               
+                src="https://i.ibb.co.com/q1yC97q/blogLogo.png"
+                alt="Digital Insights"
                 name="Flowbite"
               />
+              <p className="ml-1 mt-5">Get Tech Insights for Everyday Life</p>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
               <div>
@@ -54,7 +55,7 @@ const Footer = () => {
           </div>
           <FlowbiteFooter.Divider />
           <div className="w-full sm:flex sm:items-center sm:justify-between">
-            <FlowbiteFooter.Copyright href="#" by="Flowbite™" year={2022} />
+            <FlowbiteFooter.Copyright href="#" by="Digital Insights™" year={2024} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <FlowbiteFooter.Icon href="#" icon={BsFacebook} />
               <FlowbiteFooter.Icon href="#" icon={BsInstagram} />
