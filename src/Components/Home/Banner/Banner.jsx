@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <div className="mt-10 mb-10">
       <div className="h-[550px]">
-        <Carousel  >
+        <Carousel slideInterval={5000}  >
           {/* Slide 1 */}
           <div className="relative h-full">
             {/* Background Image */}
@@ -22,7 +22,7 @@ const Banner = () => {
               <p className="text-xl tracking-wide mb-10">
                 Discover the latest insights and updates in tech, web development, and more.
               </p>
-              <button className="bg-yellow-300 text-black text-base font-semibold py-2 px-4 rounded-lg hover:bg-yellow-600">
+              <button className="bg-yellow-300 text-black text-base font-semibold py-2 px-4 rounded-lg hover:bg-yellow-200 duration-500">
                 Learn More
               </button>
             </div>
@@ -41,7 +41,7 @@ const Banner = () => {
               <p className="text-xl tracking-wide mb-10">
                 Stay updated with the latest trends in web development and technology.
               </p>
-              <button className="bg-yellow-300 text-black text-base font-semibold py-2 px-4 rounded-lg hover:bg-yellow-600">
+              <button className="bg-yellow-300 text-black text-base font-semibold py-2 px-4 rounded-lg hover:bg-yellow-200 duration-500 ">
                 Explore blogs
               </button>
             </div>
@@ -60,7 +60,7 @@ const Banner = () => {
               <p className="text-xl tracking-wide mb-10">
                 Connect with like-minded developers and share your knowledge with the world.
               </p>
-              <button className="bg-yellow-300 text-black text-base uppercase font-semibold py-2 px-8 rounded-lg hover:bg-yellow-400">
+              <button className="bg-yellow-300 text-black text-base font-semibold py-2 px-8 rounded-lg hover:bg-yellow-200 duration-500">
                 Join Us
               </button>
             </div>
