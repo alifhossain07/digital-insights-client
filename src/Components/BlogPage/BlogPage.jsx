@@ -15,7 +15,7 @@ const BlogPage = () => {
   useEffect(() => {
     // Fetching data when the component mounts
     axios
-      .get("http://localhost:5000/blogs")
+      .get("https://digital-insights-server.vercel.app/blogs")
       .then((response) => {
         setData(response.data); // Update state with fetched data
         setLoading(false); // Stop loading once data is fetched

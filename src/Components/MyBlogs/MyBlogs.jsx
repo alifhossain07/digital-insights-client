@@ -19,7 +19,7 @@ const MyBlogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/blogs");
+        const response = await axios.get("https://digital-insights-server.vercel.app/blogs");
 
         if (user?.email) {
           // Filter blogs based on the logged-in user's email
@@ -54,7 +54,7 @@ const MyBlogs = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/blogs/${id}`); // Send DELETE request
+      await axios.delete(`https://digital-insights-server.vercel.app/blogs/${id}`); // Send DELETE request
       // Update the state by filtering out the deleted blog
       setBlogs((prevBlogs) => prevBlogs.filter((blog) => blog._id !== id));
       setOpenDeleteModal(false); // Close the delete confirmation modal

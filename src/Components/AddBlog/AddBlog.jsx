@@ -35,7 +35,7 @@ const AddBlog = () => {
       user_email: user.email, // Use logged-in user's email
     };
 
-    fetch("http://localhost:5000/blogs", {
+    fetch("https://digital-insights-server.vercel.app/blogs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

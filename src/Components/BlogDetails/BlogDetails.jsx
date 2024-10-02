@@ -14,7 +14,7 @@ const BlogDetails = () => {
   useEffect(() => {
     // Fetch blog details by ID
     axios
-      .get(`http://localhost:5000/blogs/${id}`)
+      .get(`https://digital-insights-server.vercel.app/blogs/${id}`)
       .then((response) => {
         setBlog(response.data);
         setLoading(false);

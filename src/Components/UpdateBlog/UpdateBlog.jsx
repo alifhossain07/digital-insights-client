@@ -49,7 +49,7 @@ const UpdateBlog = () => {
       user_email,
     };
 
-    fetch(`http://localhost:5000/blogs/${_id}`, {
+    fetch(`https://digital-insights-server.vercel.app/blogs/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

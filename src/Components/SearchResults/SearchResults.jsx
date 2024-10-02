@@ -14,7 +14,7 @@ const SearchResults = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:5000/blogs"); // Adjust with your backend URL
+        const response = await fetch("https://digital-insights-server.vercel.app/blogs"); // Adjust with your backend URL
         const data = await response.json();
         setBlogs(data); // Set all blogs to state
       } catch (error) {

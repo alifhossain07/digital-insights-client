@@ -57,7 +57,7 @@ const routes = createBrowserRouter([
         path: "/updateblog/:id",
         element: <UpdateBlog></UpdateBlog>,
         loader: async ({ params }) => {
-          const response = await fetch(`http://localhost:5000/blogs/${params.id}`);
+          const response = await fetch(`https://digital-insights-server.vercel.app/blogs/${params.id}`);
           if (!response.ok) {
             throw new Error('Blog not found');
           }
