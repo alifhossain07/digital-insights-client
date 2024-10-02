@@ -5,6 +5,7 @@ import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
 import BlogPage from "../Components/BlogPage/BlogPage";
 import BlogDetails from "../Components/BlogDetails/BlogDetails";
+import SearchResults from "../Components/SearchResults/SearchResults";
 
 
 const routes = createBrowserRouter([
@@ -32,6 +33,10 @@ const routes = createBrowserRouter([
         path: "/blog/:id",
         element: <BlogDetails></BlogDetails>       
       },
+      {
+        path: "/searchresults",
+        element: <SearchResults></SearchResults>
+      }
     ]
       
   },

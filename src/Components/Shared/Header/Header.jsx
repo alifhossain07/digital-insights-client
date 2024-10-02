@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { AuthContext } from "./../../../Providers/AuthProvider"; // Assuming AuthProvider handles Firebase auth
+import { AuthContext } from "./../../../Providers/AuthProvider";
 
 const Header = () => {
-  const { user, logOut } = useContext(AuthContext); // Get user and logOut function from AuthContext
+  const { user, logOut } = useContext(AuthContext);
+  const [searchQuery, setSearchQuery] = useState(""); // State to hold search input
+  const navigate = useNavigate();
 
   const handleSignOut = () => {
     logOut()
@@ -14,6 +16,13 @@ const Header = () => {
       .catch((error) => {
         console.error("Sign-Out Error:", error);
       });
+  };
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/searchresults?query=${searchQuery.trim()}`); 
+      setSearchQuery("");
+    }
   };
 
   return (
@@ -30,18 +39,18 @@ const Header = () => {
 
         {/* Navbar Links */}
         <div className="">
-          <Navbar.Collapse className="lg:ml-10">
+          <Navbar.Collapse className=" uppercase lg:ml-10">
             <Link to="/">Home</Link>
             <Navbar.Link href="#">About</Navbar.Link>
-            <Dropdown className="mt-2" inline label="Blogs">
+            <Dropdown className="uppercase mt-2" inline label="BLOG">
               <Dropdown.Item>
                 <Link to="/blogPage">All Blogs</Link>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link to="/add-blog">Add Blog</Link>
+                <Link to="/add-blog">Write New Blog</Link>
               </Dropdown.Item>
               <Dropdown.Item>
-                <Link to="/featured-blogs">Featured Blogs</Link>
+                <Link to="/">Newly added Blogs</Link>
               </Dropdown.Item>
             </Dropdown>
             <Navbar.Link href="#">Wishlist</Navbar.Link>
@@ -56,36 +65,18 @@ const Header = () => {
               type="search"
               placeholder="Search For A Blog"
               className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)} // Update search input
             />
-            <button className="font-semibold bg-yellow-200 py-2 px-4 rounded-lg hover:bg-yellow-300 transition duration-200">
+            <button
+              onClick={handleSearch}
+              className="font-semibold bg-yellow-200 py-2 px-4 rounded-lg hover:bg-yellow-300 transition duration-200"
+            >
               Search
             </button>
           </div>
 
-          {/* User Profile Dropdown for Smaller Screens */}
-          <Dropdown
-            className="lg:hidden mt-2"
-            arrowIcon={false}
-            inline
-            label={
-              <button className="bg-yellow-200 px-2 text-sm lg:hidden py-1">
-                Menu
-              </button>
-            }
-          >
-            <Link to="/">
-              <Dropdown.Item>Home</Dropdown.Item>
-            </Link>
-            <Dropdown.Item>About</Dropdown.Item>
-            <Link to="/blogPage">
-              <Dropdown.Item>Blogs</Dropdown.Item>
-            </Link>
-            <Dropdown.Item>Add Blog</Dropdown.Item>
-            <Dropdown.Item>Update Blog</Dropdown.Item>
-            <Dropdown.Item>Wishlist</Dropdown.Item>
-          </Dropdown>
-
-          {/* User Profile Dropdown for Larger Screens */}
+          {/* User Profile Dropdown */}
           <Dropdown
             arrowIcon={false}
             inline
@@ -93,7 +84,7 @@ const Header = () => {
               <img
                 src={user?.photoURL || "https://i.ibb.co/KyWtrr4/avatar.jpg"}
                 alt="User settings"
-                className="lg:w-14 w-10 rounded-full"
+                className="lg:w-12 lg:h-12 w-10 rounded-full"
               />
             }
           >
@@ -105,7 +96,8 @@ const Header = () => {
                     {user.email}
                   </span>
                 </Dropdown.Header>
-               
+                <Dropdown.Item >My Blogs</Dropdown.Item>
+                <Dropdown.Item >Add Blog</Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
               </>

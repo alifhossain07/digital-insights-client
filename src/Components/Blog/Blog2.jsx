@@ -8,6 +8,7 @@ const Blog2 = ({ data }) => {
     title,
     image,
     short_description,
+    author,
     category,
     publishedAt,
     _id, // Assuming you have an ID for each blog
@@ -29,6 +30,9 @@ const Blog2 = ({ data }) => {
           <h1 className="text-xl tracking-wider flex-grow font-semibold text-gray-800">{title}</h1>
           <p className="text-gray-800 tracking-wider flex-grow text-lg">
             <span className="font-semibold">Category :</span> {category}
+          </p>
+          <p className="text-gray-800 tracking-wider flex-grow text-lg">
+            <span className="font-semibold">Author :</span> {author}
           </p>
           <p className="text-lg tracking-wider text-gray-700 flex-grow min-h-[50px]">
             {short_description}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Blog from "../../Blog/Blog";
 import axios from "axios";
 import Blog2 from "../../Blog/Blog2";
+import { Spinner } from "flowbite-react";
 
 const FeaturedBlog = () => {
   const [data, setData] = useState([]);
@@ -22,7 +23,12 @@ const FeaturedBlog = () => {
       });
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="flex flex-wrap justify-center items-center gap-2 h-[80vh]">
+  
+  <div className="text-center">
+    <Spinner aria-label="Center-aligned spinner example" size="xl" />
+  </div>
+  </div>
   if (error) return <p>Error: {error}</p>;
 
   return (

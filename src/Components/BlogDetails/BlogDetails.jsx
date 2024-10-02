@@ -50,11 +50,15 @@ const BlogDetails = () => {
             <span className="font-semibold">Category:</span> {blog.category}
           </p>
           <p className="text-lg text-gray-600 mb-4">
+            <span className="font-semibold">Author:</span> {blog.author}
+          </p>
+          <p className="text-lg text-gray-600 mb-4">
             <span className="font-semibold">Published On:</span> 
             <span className="flex items-center gap-2">
               <SlCalender /> {blog.publishedAt}
             </span>
           </p>
+          
           <h2 className="text-2xl font-semibold text-gray-800 mb-2">Introduction</h2>
           <p className="text-lg text-gray-700 mb-4">{blog.introduction}</p>
           <h2 className="text-2xl font-semibold text-gray-800 mb-2">Body</h2>
