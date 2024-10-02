@@ -20,10 +20,10 @@ const Banner = () => {
             {/* Content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
               <h1 className="lg:text-5xl text-2xl tracking-wider uppercase font-bold mb-10">Welcome to Digital<span className="text-yellow-300"> Insights</span> </h1>
-              <p className="lg:text-xl tracking-wide mb-10">
+              <p className="lg:text-xl tracking-wide mb-10 w-2/3">
                 Discover the latest insights and updates in tech, web development, and more.
               </p>
-              <button className="bg-yellow-300 text-black text-base font-semibold py-2 px-4 rounded-lg hover:bg-yellow-200 duration-500">
+              <button className="bg-yellow-300 text-black text-xs lg:text-base font-semibold px-3 py-1 lg:py-2 lg:px-4 rounded-lg hover:bg-yellow-200 duration-500">
                 Learn More
               </button>
             </div>
@@ -38,12 +38,12 @@ const Banner = () => {
             />
             <div className="absolute inset-0 bg-black bg-opacity-70"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-              <h1 className="text-5xl uppercase tracking-wider font-bold mb-10">Explore  Blogs By <span className="text-yellow-300">Tech Writers</span></h1>
-              <p className="text-xl tracking-wide mb-10">
+              <h1 className="lg:text-5xl text-2xl tracking-wider uppercase font-bold mb-10">Explore  Blogs By <span className="text-yellow-300">Tech Writers</span></h1>
+              <p className="lg:text-xl tracking-wide mb-10 w-2/3">
                 Stay updated with the latest trends in web development and technology.
               </p>
               <Link to='/blogPage'>
-              <button className="bg-yellow-300 text-black text-base font-semibold py-2 px-4 rounded-lg hover:bg-yellow-200 duration-500 ">
+              <button className="bg-yellow-300 text-black text-xs lg:text-base font-semibold px-3 py-1 lg:py-2 lg:px-4 rounded-lg hover:bg-yellow-200 duration-500">
                 Explore blogs
               </button>
               </Link>
@@ -59,11 +59,11 @@ const Banner = () => {
             />
             <div className="absolute inset-0 bg-black bg-opacity-70"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-              <h1 className="text-5xl uppercase tracking-wider font-bold mb-10">Write Your <span className="text-yellow-300">Own Blog</span></h1>
-              <p className="text-xl tracking-wide mb-10">
+              <h1 className="lg:text-5xl text-2xl tracking-wider uppercase font-bold mb-10">Write Your <span className="text-yellow-300">Own Blog</span></h1>
+              <p className="lg:text-xl tracking-wide mb-10 w-2/3">
                 Connect with like-minded developers and share your knowledge with the world.
               </p>
-              <Link to='/login'><button className="bg-yellow-300 text-black text-base font-semibold py-2 px-8 rounded-lg hover:bg-yellow-200 duration-500">
+              <Link to='/login'><button className="bg-yellow-300 text-black text-xs lg:text-base font-semibold px-3 py-1 lg:py-2 lg:px-4 rounded-lg hover:bg-yellow-200 duration-500">
                 Join Us
               </button></Link>
               
