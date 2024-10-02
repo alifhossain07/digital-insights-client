@@ -6,6 +6,7 @@ import Register from "../Components/Register/Register";
 import BlogPage from "../Components/BlogPage/BlogPage";
 import BlogDetails from "../Components/BlogDetails/BlogDetails";
 import SearchResults from "../Components/SearchResults/SearchResults";
+import MyBlogs from "../Components/MyBlogs/MyBlogs";
 
 
 const routes = createBrowserRouter([
@@ -36,6 +37,10 @@ const routes = createBrowserRouter([
       {
         path: "/searchresults",
         element: <SearchResults></SearchResults>
+      },
+      {
+        path: "/myblogs",
+        element: <MyBlogs></MyBlogs>
       }
     ]
       

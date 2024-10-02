@@ -12,6 +12,7 @@ const Header = () => {
     logOut()
       .then(() => {
         console.log("User signed out");
+        navigate("/");
       })
       .catch((error) => {
         console.error("Sign-Out Error:", error);
@@ -20,7 +21,7 @@ const Header = () => {
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
-      navigate(`/searchresults?query=${searchQuery.trim()}`); 
+      navigate(`/searchresults?query=${searchQuery.trim()}`);
       setSearchQuery("");
     }
   };
@@ -49,7 +50,6 @@ const Header = () => {
               <Dropdown.Item>
                 <Link to="/add-blog">Write New Blog</Link>
               </Dropdown.Item>
-              
             </Dropdown>
             <Navbar.Link href="#">Wishlist</Navbar.Link>
           </Navbar.Collapse>
@@ -94,8 +94,12 @@ const Header = () => {
                     {user.email}
                   </span>
                 </Dropdown.Header>
-                <Dropdown.Item >My Blogs</Dropdown.Item>
-                <Dropdown.Item >Add Blog</Dropdown.Item>
+                <Link to="/myblogs">
+                  {" "}
+                  <Dropdown.Item>My Blogs</Dropdown.Item>
+                </Link>
+
+                <Dropdown.Item>Add Blog</Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
               </>
