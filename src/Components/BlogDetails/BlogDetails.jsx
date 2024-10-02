@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Card } from "flowbite-react";
 import { SlCalender } from "react-icons/sl";
+import { Spinner } from "flowbite-react";
 
 const BlogDetails = () => {
   const { id } = useParams(); // Get the blog ID from the URL
@@ -24,7 +25,13 @@ const BlogDetails = () => {
       });
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="flex flex-wrap justify-center items-center gap-2 h-[80vh]">
+  
+  <div className="text-center">
+    <Spinner aria-label="Center-aligned spinner example" size="xl" />
+  </div>
+  
+</div>;
   if (error) return <p>Error: {error}</p>;
 
   return (

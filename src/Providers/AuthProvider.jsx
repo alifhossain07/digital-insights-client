@@ -10,7 +10,6 @@ import {
 } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 
-
 export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
@@ -51,17 +50,6 @@ const AuthProvider = ({ children }) => {
   // Listen to auth state changes
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        // Log the entire user object to check if photoURL is present
-        console.log('Current User:', currentUser);
-
-        // Specifically check if the photoURL is available
-        if (currentUser.photoURL) {
-          console.log('User photo URL:', currentUser.photoURL);
-        } else {
-          console.log('No photo URL for the user.');
-        }
-      }
       setUser(currentUser);
       setLoading(false);
     });

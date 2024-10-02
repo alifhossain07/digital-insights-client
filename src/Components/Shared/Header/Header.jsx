@@ -1,15 +1,19 @@
-import { Button } from "flowbite-react";
-import React, { useState } from "react";
-import { Avatar, Dropdown, Navbar} from "flowbite-react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import { AuthContext } from "./../../../Providers/AuthProvider"; // Assuming AuthProvider handles Firebase auth
 
 const Header = () => {
-  const [user, setUser] = useState(null); // Example: null means no user logged in
+  const { user, logOut } = useContext(AuthContext); // Get user and logOut function from AuthContext
 
   const handleSignOut = () => {
-    // Handle the sign-out logic
-    setUser(null);
-    console.log("User signed out");
+    logOut()
+      .then(() => {
+        console.log("User signed out");
+      })
+      .catch((error) => {
+        console.error("Sign-Out Error:", error);
+      });
   };
 
   return (
@@ -26,24 +30,23 @@ const Header = () => {
 
         {/* Navbar Links */}
         <div className="">
-        <Navbar.Collapse className="lg:ml-10">
-          <Link to="/">Home</Link>
-          <Navbar.Link href="#">About</Navbar.Link>
-          <Dropdown className="mt-2" inline label="Blogs">
-            <Dropdown.Item>
-              <Link to="/blogPage">All Blogs</Link>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <Link to="/add-blog">Add Blog</Link>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <Link to="/featured-blogs">Featured Blogs</Link>
-            </Dropdown.Item>
-          </Dropdown>
-          <Navbar.Link href="#">Wishlist</Navbar.Link>
-        </Navbar.Collapse>
+          <Navbar.Collapse className="lg:ml-10">
+            <Link to="/">Home</Link>
+            <Navbar.Link href="#">About</Navbar.Link>
+            <Dropdown className="mt-2" inline label="Blogs">
+              <Dropdown.Item>
+                <Link to="/blogPage">All Blogs</Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/add-blog">Add Blog</Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/featured-blogs">Featured Blogs</Link>
+              </Dropdown.Item>
+            </Dropdown>
+            <Navbar.Link href="#">Wishlist</Navbar.Link>
+          </Navbar.Collapse>
         </div>
-        
 
         {/* Avatar and Dropdown for User Menu */}
         <div className="flex items-center gap-2">
@@ -59,35 +62,36 @@ const Header = () => {
             </button>
           </div>
 
-          {/* User Profile Dropdown */}
-          <Dropdown className="lg:hidden mt-2"
+          {/* User Profile Dropdown for Smaller Screens */}
+          <Dropdown
+            className="lg:hidden mt-2"
             arrowIcon={false}
             inline
             label={
-              <button className="bg-yellow-200 px-2 text-sm lg:hidden py-1">Menu</button>
+              <button className="bg-yellow-200 px-2 text-sm lg:hidden py-1">
+                Menu
+              </button>
             }
           >
-            
-              <>
-                
-              <Link to='/'><Dropdown.Item>Home</Dropdown.Item></Link>
-                <Dropdown.Item>About</Dropdown.Item>
-                <Link to='/blogPage'><Dropdown.Item>Blogs</Dropdown.Item></Link>
-                
-                <Dropdown.Item>Add Blog</Dropdown.Item>
-                <Dropdown.Item>Update Blog</Dropdown.Item>
-                <Dropdown.Item>Wishlist</Dropdown.Item>
-                
-              </>
-         
+            <Link to="/">
+              <Dropdown.Item>Home</Dropdown.Item>
+            </Link>
+            <Dropdown.Item>About</Dropdown.Item>
+            <Link to="/blogPage">
+              <Dropdown.Item>Blogs</Dropdown.Item>
+            </Link>
+            <Dropdown.Item>Add Blog</Dropdown.Item>
+            <Dropdown.Item>Update Blog</Dropdown.Item>
+            <Dropdown.Item>Wishlist</Dropdown.Item>
           </Dropdown>
 
+          {/* User Profile Dropdown for Larger Screens */}
           <Dropdown
             arrowIcon={false}
             inline
             label={
               <img
-                src={user ? user.image : "https://i.ibb.co/KyWtrr4/avatar.jpg"}
+                src={user?.photoURL || "https://i.ibb.co/KyWtrr4/avatar.jpg"}
                 alt="User settings"
                 className="lg:w-14 w-10 rounded-full"
               />
@@ -96,14 +100,12 @@ const Header = () => {
             {user ? (
               <>
                 <Dropdown.Header>
-                  <span className="block text-sm">{user.name}</span>
+                  <span className="block text-sm">{user.displayName}</span>
                   <span className="block truncate text-sm font-medium">
                     {user.email}
                   </span>
                 </Dropdown.Header>
-                <Dropdown.Item>Dashboard</Dropdown.Item>
-                <Dropdown.Item>Settings</Dropdown.Item>
-                <Dropdown.Item>Earnings</Dropdown.Item>
+               
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
               </>
@@ -119,9 +121,6 @@ const Header = () => {
               </>
             )}
           </Dropdown>
-
-          {/* Toggle button for smaller screens */}
-          
         </div>
       </Navbar>
     </div>

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Tabs } from "flowbite-react";
-import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
+
 import { MdDashboard } from "react-icons/md";
 import axios from "axios";
 import Blog from "../Blog/Blog";
+import { Spinner } from "flowbite-react";
 
 const BlogPage = () => {
   const [data, setData] = useState([]);
@@ -25,7 +26,13 @@ const BlogPage = () => {
       });
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="flex flex-wrap justify-center items-center gap-2 h-[80vh]">
+  
+  <div className="text-center">
+    <Spinner aria-label="Center-aligned spinner example" size="xl" />
+  </div>
+  
+</div>;
   if (error) return <p>Error: {error}</p>;
 
   const filteredBlogs =
