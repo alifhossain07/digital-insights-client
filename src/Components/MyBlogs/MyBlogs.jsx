@@ -4,7 +4,7 @@ import axios from "axios";
 import { Button, Modal } from "flowbite-react";
 import { Card, Spinner } from "flowbite-react";
 import { SlCalender } from "react-icons/sl"; // Example icon
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 
 const MyBlogs = () => {
   const { user } = useContext(AuthContext);
@@ -124,7 +124,8 @@ const MyBlogs = () => {
                       <SlCalender /> {blog.publishedAt}
                     </p>
                     <div className="flex gap-5">
-                    <Button className="bg-yellow-400 hover:!bg-yellow-300 duration-400"  >Update</Button>
+                    <Link to={`/updateblog/${blog._id}`}><Button className="bg-yellow-400 hover:!bg-yellow-300 duration-400"  >Update</Button></Link>
+                    
                     <Button className="bg-red-500 hover:!bg-red-400 duration-300" onClick={() => confirmDelete(blog)}>
                       Delete
                     </Button>

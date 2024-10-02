@@ -171,7 +171,7 @@ const BlogPage = () => {
               Recent <span className="text-yellow-300">Posts</span>
             </h1>
             <div className="flex mt-6 flex-col gap-5">
-              {data.slice(9, 13).reverse().map((blog) => (
+              {data.slice(4,8).reverse().map((blog) => (
                 <Blog key={blog.id} data={blog} />
               ))}
             </div>

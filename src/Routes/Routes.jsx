@@ -7,6 +7,7 @@ import BlogPage from "../Components/BlogPage/BlogPage";
 import BlogDetails from "../Components/BlogDetails/BlogDetails";
 import SearchResults from "../Components/SearchResults/SearchResults";
 import MyBlogs from "../Components/MyBlogs/MyBlogs";
+import UpdateBlog from "../Components/UpdateBlog/UpdateBlog";
 
 
 const routes = createBrowserRouter([
@@ -41,6 +42,17 @@ const routes = createBrowserRouter([
       {
         path: "/myblogs",
         element: <MyBlogs></MyBlogs>
+      },
+      {
+        path: "/updateblog/:id",
+        element: <UpdateBlog></UpdateBlog>,
+        loader: async ({ params }) => {
+          const response = await fetch(`http://localhost:5000/blogs/${params.id}`);
+          if (!response.ok) {
+            throw new Error('Blog not found');
+          }
+          return response.json();
+        },
       }
     ]
       
