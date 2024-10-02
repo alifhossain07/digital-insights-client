@@ -61,8 +61,8 @@ const BlogPage = () => {
         </div>
       </div>
       {/* Blog Section */}
-      <div className="w-11/12 mx-auto">
-        <h1 className="text-3xl tracking-wider uppercase font-semibold mb-10">
+      <div className="w-11/12 mx-auto mb-20">
+        <h1 className="lg:text-3xl text-2xl tracking-wider uppercase font-semibold mb-10">
           Explore By <span className="text-yellow-300">Category</span>
         </h1>
         <div className="flex lg:flex-row flex-col gap-16">
@@ -166,7 +166,7 @@ const BlogPage = () => {
               
             </Tabs>
           </div>
-          <div className="lg:w-4/12">
+          <div className="lg:w-4/12 mb-20">
             <h1 className="text-2xl uppercase font-semibold tracking-wider border-b-4 mt-20 p-2">
               Recent <span className="text-yellow-300">Posts</span>
             </h1>

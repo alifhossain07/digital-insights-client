@@ -62,16 +62,16 @@ const AddBlog = () => {
 
   return (
     <div className="font-mont mb-10">
-      <div className="flex justify-around py-20">
-        <div className="space-y-5 mt-32 ">
-          <h1 className="uppercase font-semibold tracking-wider text-3xl">
+      <div className="flex flex-col lg:flex-row justify-around py-20">
+        <div className="space-y-5 p-4 lg:p-0 lg:mt-32 ">
+          <h1 className="uppercase font-semibold tracking-wider text-2xl lg:text-3xl">
             Share Your <span className="text-yellow-300">Thoughts</span>
           </h1>
-          <p className="text-xl tracking-wider">
+          <p className="lg:text-xl text-lg tracking-wider">
             Add Your Blogs and Inspire Others
           </p>
         </div>
-        <div className="w-5/12">
+        <div className="lg:w-5/12 p-4 lg:p-0 mt-5 lg:mt-0">
           <img
             className=" mx-auto"
             src="https://i.ibb.co.com/W01gTnB/blogU.jpg"

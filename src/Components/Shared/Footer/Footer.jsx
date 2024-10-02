@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="h-[350px] ">
+    <div className=" bg-gray-200 ">
       <FlowbiteFooter className="h-full bg-gray-200" container>
         <div className="w-full px-4 lg:px-14">
           {/* Responsive flex layout, vertical stacking on small screens */}
@@ -26,7 +26,7 @@ const Footer = () => {
                 Get Tech Insights for Everyday Life
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-20 sm:grid-cols-3">
+            <div className="grid gap-10  mt-10 grid-cols-3">
               <div className="">
                 <FlowbiteFooter.Title
                   className="lg:text-2xl text-yellow-300"
@@ -51,7 +51,7 @@ const Footer = () => {
               </div>
               <div>
                 <FlowbiteFooter.Title
-                  className="text-2xl text-yellow-300"
+                  className="lg:text-2xl text-yellow-300"
                   title="Legal"
                 />
                 <FlowbiteFooter.LinkGroup col>

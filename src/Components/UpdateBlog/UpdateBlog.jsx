@@ -79,8 +79,8 @@ const UpdateBlog = () => {
   return (
     <div className="font-mont mb-10">
 
-<div className="flex justify-around py-20">
-        <div className="space-y-5  mt-32 ">
+<div className="flex flex-col lg:flex-row justify-around py-20">
+        <div className="space-y-5  lg:mt-32 ">
           <h1 className="uppercase font-semibold tracking-wider text-3xl">
             Refresh Your <span className="text-yellow-300">Stories</span>
           </h1>
@@ -90,7 +90,7 @@ const UpdateBlog = () => {
         </div>
         <div className="">
           <img
-            className="h-5/6 mx-auto"
+            className="h-5/6 mx-auto mt-10 lg:mt-0"
             src="https://i.ibb.co.com/pKf9FmN/update-blog.webp"
             alt="Blog Banner"
           />
@@ -99,10 +99,10 @@ const UpdateBlog = () => {
       <h1 className="text-center mt-10 lg:text-3xl text-2xl font-semibold uppercase text-black">
         Update Your <span className="text-yellow-300">Blog</span> 
       </h1>
-      <div className=" w-10/12 mx-auto">
+      <div className=" lg:w-10/12 mx-auto">
         <form
           onSubmit={handleUpdateBlog}
-          className="space-y-4  rounded-xl p-10"
+          className="space-y-4  rounded-xl lg:p-10 p-4"
         >
           <div className="flex flex-col gap-4 justify-between">
             <div className="">

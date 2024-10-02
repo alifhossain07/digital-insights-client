@@ -52,7 +52,7 @@ const About = () => {
       </div>
 
       {/* Our Story Section */}
-      <div className="py-32">
+      <div className="lg:py-32">
         <div className="flex flex-col lg:flex-row justify-around w-10/12 mx-auto gap-10 items-center">
           <div>
             <h2 className="text-2xl lg:text-3xl font-semibold tracking-wider  uppercase">
@@ -73,8 +73,8 @@ const About = () => {
       </div>
 
       {/* Our Focus Areas */}
-      {/* Our Focus Areas */}
-<div className="relative  text-white py-32 px-6 lg:px-16">
+      
+<div className="relative  text-white py-20 lg:py-32 px-6 lg:px-16">
   <div className="w-11/12 mx-auto">
     <h2 className="lg:text-3xl text-2xl font-semibold mb-16  tracking-wider text-[#333] font-mont uppercase">
       Our <span className="text-yellow-300">Focus Areas</span> 
@@ -141,7 +141,7 @@ const About = () => {
 
 
       {/* Meet the Founder Section */}
-      <div className="py-20">
+      <div className="lg:py-20 py-10">
         <div className=" flex gap-12 lg:gap-0 flex-col-reverse lg:flex-row-reverse w-10/12 mx-auto justify-between items-center">
           <div className="">
             <img
@@ -163,8 +163,8 @@ const About = () => {
       </div>
 
       {/* Testimonials */}
-      <section className="py-32 ">
-        <div className="container w-10/12 mx-auto px-6">
+      <section className="lg:py-32 pt-20 lg:pt-0 ">
+        <div className="container lg:w-10/12 mx-auto px-6">
         <h2 className="lg:text-3xl mb-20 text-2xl tracking-wider font-semibold uppercase ">
               Readers  <span className="text-yellow-300">Review</span>
             </h2>

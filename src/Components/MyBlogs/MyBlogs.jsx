@@ -71,8 +71,8 @@ const MyBlogs = () => {
   return (
     <div className="py-20">
       {/* Intro Section */}
-      <div className="flex">
-        <div className="space-y-3 mt-32 w-1/2">
+      <div className="flex flex-col lg:flex-row">
+        <div className="lg:space-y-3 space-y-8 lg:mt-32 lg:w-1/2">
           <h1 className="uppercase font-semibold tracking-wider text-3xl">
             Welcome! <span className="text-yellow-300"></span>
           </h1>
@@ -81,7 +81,7 @@ const MyBlogs = () => {
             Them.
           </p>
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2 mt-10 lg:mt-0">
           <img
             className="h-5/6 mx-auto"
             src="https://i.ibb.co/7GG3Cp9/blog-Banner2.jpg"
