@@ -49,9 +49,7 @@ const Header = () => {
               <Dropdown.Item>
                 <Link to="/add-blog">Write New Blog</Link>
               </Dropdown.Item>
-              <Dropdown.Item>
-                <Link to="/">Newly added Blogs</Link>
-              </Dropdown.Item>
+              
             </Dropdown>
             <Navbar.Link href="#">Wishlist</Navbar.Link>
           </Navbar.Collapse>
