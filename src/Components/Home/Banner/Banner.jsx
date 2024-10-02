@@ -19,8 +19,8 @@ const Banner = () => {
             <div className="absolute inset-0 bg-black bg-opacity-70"></div>
             {/* Content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6">
-              <h1 className="text-5xl tracking-wider uppercase font-bold mb-10">Welcome to Digital<span className="text-yellow-300"> Insights</span> </h1>
-              <p className="text-xl tracking-wide mb-10">
+              <h1 className="lg:text-5xl text-2xl tracking-wider uppercase font-bold mb-10">Welcome to Digital<span className="text-yellow-300"> Insights</span> </h1>
+              <p className="lg:text-xl tracking-wide mb-10">
                 Discover the latest insights and updates in tech, web development, and more.
               </p>
               <button className="bg-yellow-300 text-black text-base font-semibold py-2 px-4 rounded-lg hover:bg-yellow-200 duration-500">
