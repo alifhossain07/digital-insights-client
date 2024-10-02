@@ -27,7 +27,7 @@ const Header = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <Navbar className="bg-gray-200 shadow-xl p-6">
         {/* Logo and Brand */}
         <Navbar.Brand>
@@ -42,16 +42,10 @@ const Header = () => {
         <div className="">
           <Navbar.Collapse className=" uppercase lg:ml-10">
             <Link to="/">Home</Link>
-            <Navbar.Link href="#">About</Navbar.Link>
-            <Dropdown className="uppercase mt-2" inline label="BLOG">
-              <Dropdown.Item>
-                <Link to="/blogPage">All Blogs</Link>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Link to="/add-blog">Write New Blog</Link>
-              </Dropdown.Item>
-            </Dropdown>
-            <Navbar.Link href="#">Wishlist</Navbar.Link>
+            <Link to="/blogPage">Blogs</Link>
+            <Link to="/about">About</Link>
+            
+            
           </Navbar.Collapse>
         </div>
 

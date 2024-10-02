@@ -9,6 +9,7 @@ import SearchResults from "../Components/SearchResults/SearchResults";
 import MyBlogs from "../Components/MyBlogs/MyBlogs";
 import UpdateBlog from "../Components/UpdateBlog/UpdateBlog";
 import AddBlog from "../Components/AddBlog/AddBlog";
+import About from './../Components/About/About';
 
 
 const routes = createBrowserRouter([
@@ -27,6 +28,10 @@ const routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,       
+      },
+      {
+        path: "/about",
+        element: <About></About>,       
       },
       {
         path: "/blogPage",

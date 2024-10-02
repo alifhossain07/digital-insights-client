@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { Card } from "flowbite-react";
 import { SlCalender } from "react-icons/sl";
@@ -67,6 +67,10 @@ const BlogDetails = () => {
           <p className="text-lg text-gray-700 mb-4">{blog.conclusion}</p>
         </div>
       </Card>
+      <div className="text-center py-10">
+      <Link to="/blogPage"><button className="bg-yellow-400 px-4 py-2 hover:bg-yellow-300 duration-400 text-white">Go Back</button></Link>
+        
+      </div>
     </div>
   );
 };
