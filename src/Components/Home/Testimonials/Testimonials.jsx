@@ -28,10 +28,10 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <div className='w-11/12 mx-auto py-32 mb-10'>
-      <h1 className='text-3xl uppercase font-semibold tracking-wider mb-5 '>
+      <h1 className='lg:text-3xl text-2xl uppercase font-semibold tracking-wider mb-5 '>
         What Our <span className='text-yellow-300'>Users</span> Say
       </h1>
-      <p className='text-xl tracking-wider mb-10 '>
+      <p className='lg:text-xl text-lg tracking-wider mb-10 '>
         Hear from our top contributors and users
       </p>
 
@@ -41,7 +41,7 @@ const Testimonials = () => {
           <Card key={index} className='shadow-lg'>
             <div className='flex flex-col items-center'>
               <img
-                className='w-24 h-24 rounded-full border-4 border-yellow-300 mb-4'
+                className='lg:w-24 w-20 h-20 lg:h-24 rounded-full border-4 border-yellow-300 mb-4'
                 src={testimonial.profilePic}
                 alt={testimonial.name}
               />

@@ -27,10 +27,10 @@ const contributors = [
 const TopContributors = () => {
   return (
     <div className="w-11/12 mx-auto py-20">
-      <h1 className="text-3xl uppercase font-semibold tracking-wider mb-5">
+      <h1 className="lg:text-3xl text-2xl uppercase font-semibold tracking-wider mb-5">
         Leading <span className="text-yellow-300">Contributors</span>
       </h1>
-      <p className="text-xl tracking-wider mb-10">
+      <p className="lg:text-xl text-lg tracking-wider mb-10">
         Here are the top Contributors of this platform
       </p>
 

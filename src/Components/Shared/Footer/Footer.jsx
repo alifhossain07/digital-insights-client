@@ -18,18 +18,18 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row w-full justify-between items-start md:items-center space-y-4 md:space-y-0">
             <div className="mb-4 md:mb-0">
               <img
-                className="w-64"
+                className="lg:w-64 w-52"
                 src="https://i.ibb.co.com/q1yC97q/blogLogo.png"
                 alt=""
               />
-              <p className="mt-5 text-xl tracking-wider">
+              <p className="mt-5 text-lg lg:text-xl tracking-wider">
                 Get Tech Insights for Everyday Life
               </p>
             </div>
             <div className="grid grid-cols-2 gap-20 sm:grid-cols-3">
               <div className="">
                 <FlowbiteFooter.Title
-                  className="text-2xl text-yellow-300"
+                  className="lg:text-2xl text-yellow-300"
                   title="About"
                 />
                 <FlowbiteFooter.LinkGroup col>
@@ -41,7 +41,7 @@ const Footer = () => {
               </div>
               <div>
                 <FlowbiteFooter.Title
-                  className="text-2xl text-yellow-300"
+                  className="lg:text-2xl text-yellow-300"
                   title="Follow Us"
                 />
                 <FlowbiteFooter.LinkGroup col>
