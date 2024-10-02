@@ -99,7 +99,9 @@ const Header = () => {
                   <Dropdown.Item>My Blogs</Dropdown.Item>
                 </Link>
 
-                <Dropdown.Item>Add Blog</Dropdown.Item>
+                <Link to="/addblog"> <Dropdown.Item>Add Blog</Dropdown.Item></Link>
+
+                
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
               </>

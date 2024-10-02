@@ -137,9 +137,10 @@ const MyBlogs = () => {
             ))}
           </div>
         ) : (
-          <p className="mt-10 text-xl">No blogs found for your account.</p>
+          <p className="mt-10 text-xl">No Blogs Found Start Writing Today!</p>
         )}
       </div>
+
 
       
 

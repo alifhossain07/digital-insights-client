@@ -8,6 +8,7 @@ import BlogDetails from "../Components/BlogDetails/BlogDetails";
 import SearchResults from "../Components/SearchResults/SearchResults";
 import MyBlogs from "../Components/MyBlogs/MyBlogs";
 import UpdateBlog from "../Components/UpdateBlog/UpdateBlog";
+import AddBlog from "../Components/AddBlog/AddBlog";
 
 
 const routes = createBrowserRouter([
@@ -42,6 +43,10 @@ const routes = createBrowserRouter([
       {
         path: "/myblogs",
         element: <MyBlogs></MyBlogs>
+      },
+      {
+        path: "/addblog",
+        element: <AddBlog></AddBlog>
       },
       {
         path: "/updateblog/:id",
