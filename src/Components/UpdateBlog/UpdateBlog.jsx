@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useNavigate, useLoaderData } from "react-router-dom";
 // import Swal from "sweetalert2"; // Removed SweetAlert import
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const UpdateBlog = () => {
   const { user } = useContext(AuthContext);
   const blogData = useLoaderData();
+  const navigate = useNavigate();
   const [successModalOpen, setSuccessModalOpen] = useState(false);
   const [errorModalOpen, setErrorModalOpen] = useState(false);
 
@@ -67,6 +68,12 @@ const UpdateBlog = () => {
         console.error("Error updating blog:", error);
         setErrorModalOpen(true);
       });
+      
+  };
+
+  const handleSuccessModalClose = () => {
+    setSuccessModalOpen(false);
+    navigate("/myblogs"); // Navigate to My Blogs page on close
   };
 
   return (
@@ -251,7 +258,7 @@ const UpdateBlog = () => {
               <button
                 type="button"
                 className="btn"
-                onClick={() => setSuccessModalOpen(false)}
+                onClick={handleSuccessModalClose}
               >
                 Close
               </button>
