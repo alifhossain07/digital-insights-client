@@ -33,10 +33,10 @@ const FeaturedBlog = () => {
 
   return (
     <div className="w-11/12 mb-16 py-20 mx-auto">
-      <h1 className="text-3xl  uppercase font-semibold tracking-wider mb-5">
+      <h1 className="lg:text-3xl text-2xl  uppercase font-semibold tracking-wider mb-5">
         Featured <span className="text-yellow-300">Blogs</span>
       </h1>
-      <p className="text-xl tracking-wider mb-10">
+      <p className="lg:text-xl text-lg tracking-wider mb-10">
         Checkout the top articles by our Featured Contributors
       </p>
       <div className="w-11/12 hidden   mt-10 mx-auto lg:grid lg:grid-cols-1 gap-5  ">

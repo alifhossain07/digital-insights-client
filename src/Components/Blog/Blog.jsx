@@ -23,23 +23,23 @@ const Blog = ({ data }) => {
   return (
     <Card className="flex-grow">
       <div className="flex flex-col flex-grow space-y-5">
-        <img src={image} className="h-64" alt={title} />
-        <h1 className="text-xl tracking-wider flex-grow font-semibold text-gray-800">{title}</h1>
-        <p className="text-gray-800 tracking-wider flex-grow text-lg">
+        <img src={image} className="lg:h-64 h-44" alt={title} />
+        <h1 className="lg:text-xl text-lg tracking-wider flex-grow font-semibold text-gray-800">{title}</h1>
+        <p className="text-gray-800 tracking-wider flex-grow text-base lg:text-lg">
           <span className="font-semibold">Category :</span> {category}
         </p>
-        <p className="text-gray-800 tracking-wider flex-grow text-lg">
+        <p className="text-gray-800 tracking-wider flex-grow text-base lg:text-lg">
           <span className="font-semibold">Author :</span> {author}
         </p>
-        <p className="text-lg tracking-wider text-gray-700 flex-grow min-h-[50px]">
+        <p className="text-base lg:text-lg tracking-wider text-gray-700 flex-grow min-h-[50px]">
           {short_description}
         </p>
         <div className="flex justify-between items-center flex-grow mt-auto">
-          <p className="flex font-semibold tracking-wider items-center gap-2 text-yellow-300 text-lg">
+          <p className="flex font-semibold tracking-wider items-center gap-2 text-yellow-300 text-base lg:text-lg">
             <SlCalender /> {publishedAt}
           </p>
           <button
-            className="text-yellow-300 underline font-semibold tracking-wider text-lg"
+            className="text-yellow-300 underline font-semibold tracking-wider text-base lg:text-lg"
             onClick={handleReadMore} // Add click handler
           >
             Read More

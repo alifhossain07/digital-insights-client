@@ -59,10 +59,10 @@ const Categories = () => {
 
   return (
     <div className="w-11/12 py-20 mx-auto">
-      <h1 className="text-3xl font-semibold mb-5 uppercase tracking-wider">
+      <h1 className="text-2xl lg:text-3xl font-semibold mb-5 uppercase tracking-wider">
         Browse <span className="text-yellow-300">Categories</span>
       </h1>
-      <p className="text-xl tracking-wider mb-20">
+      <p className="lg:text-xl text-lg tracking-wider mb-20">
         Find What You are Looking for by checking out our categories
       </p>
 
