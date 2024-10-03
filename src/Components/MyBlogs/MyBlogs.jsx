@@ -4,7 +4,8 @@ import axios from "axios";
 import { Button, Modal } from "flowbite-react";
 import { Card, Spinner } from "flowbite-react";
 import { SlCalender } from "react-icons/sl"; // Example icon
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom";
+import DOMPurify from "dompurify"; // Import DOMPurify
 
 const MyBlogs = () => {
   const { user } = useContext(AuthContext);
@@ -68,6 +69,10 @@ const MyBlogs = () => {
     setOpenDeleteModal(true); // Open the delete confirmation modal
   };
 
+  const createMarkup = (html) => {
+    return { __html: DOMPurify.sanitize(html) }; // Return sanitized HTML
+  };
+
   return (
     <div className="py-20">
       {/* Intro Section */}
@@ -107,52 +112,49 @@ const MyBlogs = () => {
                     className="h-64"
                     alt={blog.title}
                   />
-                  <h1 className="text-xl tracking-wider flex-grow font-semibold text-gray-800">
-                    {blog.title}
-                  </h1>
-                  <p className="text-gray-800 tracking-wider flex-grow text-lg">
-                    <span className="font-semibold">Category :</span> {blog.category}
-                  </p>
-                  <p className="text-gray-800 tracking-wider flex-grow text-lg">
-                    <span className="font-semibold">Author :</span> {blog.author}
-                  </p>
-                  <p className="text-lg tracking-wider text-gray-700 flex-grow min-h-[50px]">
-                    {blog.short_description}
-                  </p>
+                  <h1 className="text-xl tracking-wider flex-grow font-semibold text-gray-800" 
+                      dangerouslySetInnerHTML={createMarkup(blog.title)} // Render title with HTML
+                  />
+                  <p className="text-gray-800 tracking-wider flex-grow text-lg"
+                     dangerouslySetInnerHTML={createMarkup(blog.category)} // Render category with HTML
+                  />
+                  <p className="text-gray-800 tracking-wider flex-grow text-lg"
+                     dangerouslySetInnerHTML={createMarkup(blog.author)} // Render author with HTML
+                  />
+                  <div className="text-lg tracking-wider text-gray-700 flex-grow min-h-[50px]" 
+                       dangerouslySetInnerHTML={createMarkup(blog.short_description)} // Render short description with HTML
+                  />
                   <div className="flex justify-between items-center flex-grow mt-auto">
-                    <p className="flex font-semibold tracking-wider items-center gap-2 text-yellow-300 text-lg">
-                      <SlCalender /> {blog.publishedAt}
-                    </p>
+                    <p className="flex font-semibold tracking-wider items-center gap-2 text-yellow-300 text-lg"
+                       dangerouslySetInnerHTML={createMarkup(blog.publishedAt)} // Render published date with HTML
+                    />
                     <div className="flex gap-5">
-                    <Link to={`/updateblog/${blog._id}`}><Button className="bg-yellow-400 hover:!bg-yellow-300 duration-400"  >Update</Button></Link>
-                    
-                    <Button className="bg-red-500 hover:!bg-red-400 duration-300" onClick={() => confirmDelete(blog)}>
-                      Delete
-                    </Button>
+                      <Link to={`/updateblog/${blog._id}`}>
+                        <Button className="bg-yellow-400 hover:!bg-yellow-300 duration-400">Update</Button>
+                      </Link>
+                      <Button className="bg-red-500 hover:!bg-red-400 duration-300" onClick={() => confirmDelete(blog)}>
+                        Delete
+                      </Button>
                     </div>
-                    
                   </div>
                 </div>
               </Card>
             ))}
           </div>
         ) : (
-          <p className="mt-10 text-xl">No Blogs Found Start Writing Today!</p>
+          <p className="mt-10 text-xl">No Blogs Found. Start Writing Today!</p>
         )}
       </div>
-
-
-      
 
       {/* Modal for delete confirmation */}
       {blogToDelete && (
         <Modal dismissible show={openDeleteModal} onClose={() => setOpenDeleteModal(false)}>
           <Modal.Header>Confirm Deletion</Modal.Header>
           <Modal.Body>
-            <p>Are you sure you want to delete the blog titled "{blogToDelete.title}"?</p>
+            <p dangerouslySetInnerHTML={createMarkup(`Are you sure you want to delete the blog titled "<strong>${blogToDelete.title}</strong>"?`)} />
           </Modal.Body>
           <Modal.Footer>
-            <Button className="bg-red-500 hover:!bg-red-400 duration-300"  onClick={() => handleDelete(blogToDelete._id)}>
+            <Button className="bg-red-500 hover:!bg-red-400 duration-300" onClick={() => handleDelete(blogToDelete._id)}>
               Yes, Delete
             </Button>
             <Button className="bg-yellow-400 hover:!bg-yellow-300 duration-300" onClick={() => setOpenDeleteModal(false)}>

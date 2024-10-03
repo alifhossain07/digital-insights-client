@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate, useLoaderData } from "react-router-dom";
-// import Swal from "sweetalert2"; // Removed SweetAlert import
 import { AuthContext } from "../../Providers/AuthProvider";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { Modal, Button } from "flowbite-react"; // Import Flowbite components
 
 const UpdateBlog = () => {
   const { user } = useContext(AuthContext);
-  const blogData = useLoaderData();
+  const blogData = useLoaderData(); // Preload blog data
   const navigate = useNavigate();
   const [successModalOpen, setSuccessModalOpen] = useState(false);
   const [errorModalOpen, setErrorModalOpen] = useState(false);
@@ -13,28 +15,48 @@ const UpdateBlog = () => {
   const {
     _id,
     image,
-    title,
-    category,
-    author,
-    publishedAt,
-    introduction,
-    body,
-    conclusion,
-    short_description,
+    title: initialTitle,
+    category: initialCategory,
+    author: initialAuthor,
+    publishedAt: initialPublishedAt,
+    introduction: initialIntroduction,
+    body: initialBody,
+    conclusion: initialConclusion,
+    short_description: initialShortDescription,
     user_email,
   } = blogData;
 
+  // State to manage rich text values
+  const [title, setTitle] = useState(initialTitle);
+  const [category, setCategory] = useState(initialCategory);
+  const [author, setAuthor] = useState(initialAuthor);
+  const [publishedAt, setPublishedAt] = useState(initialPublishedAt);
+  const [introduction, setIntroduction] = useState(initialIntroduction);
+  const [body, setBody] = useState(initialBody);
+  const [conclusion, setConclusion] = useState(initialConclusion);
+  const [shortDescription, setShortDescription] = useState(initialShortDescription);
+
+  // Quill toolbar configuration
+  const quillModules = {
+    toolbar: [
+      [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['bold', 'italic', 'underline', 'strike'], // Formatting buttons
+      [{ 'align': [] }],
+      ['link', 'image'], // Adding image functionality
+      [{ 'color': [] }, { 'background': [] }], // Text color
+      ['clean'], // Clear formatting
+    ],
+  };
+
+  // Include formats
+  const quillFormats = [
+    'header', 'font', 'size', 'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet', 'link', 'image', 'color', 'background', 'align'
+  ];
+
   const handleUpdateBlog = (event) => {
     event.preventDefault();
-    const form = event.target;
-    const title = form.title.value;
-    const category = form.category.value;
-    const author = form.author.value;
-    const publishedAt = form.publishedAt.value;
-    const introduction = form.introduction.value;
-    const body = form.body.value;
-    const conclusion = form.conclusion.value;
-    const short_description = form.short_description.value;
 
     const updatedBlog = {
       title,
@@ -45,7 +67,7 @@ const UpdateBlog = () => {
       introduction,
       body,
       conclusion,
-      short_description,
+      short_description: shortDescription,
       user_email,
     };
 
@@ -68,7 +90,6 @@ const UpdateBlog = () => {
         console.error("Error updating blog:", error);
         setErrorModalOpen(true);
       });
-      
   };
 
   const handleSuccessModalClose = () => {
@@ -78,9 +99,8 @@ const UpdateBlog = () => {
 
   return (
     <div className="font-mont mb-10">
-
-<div className="flex flex-col lg:flex-row justify-around py-20">
-        <div className="space-y-5  lg:mt-32 ">
+      <div className="flex flex-col lg:flex-row justify-around py-20">
+        <div className="space-y-5 lg:mt-32">
           <h1 className="uppercase font-semibold tracking-wider text-3xl">
             Refresh Your <span className="text-yellow-300">Stories</span>
           </h1>
@@ -96,137 +116,156 @@ const UpdateBlog = () => {
           />
         </div>
       </div>
+
       <h1 className="text-center mt-10 lg:text-3xl text-2xl font-semibold uppercase text-black">
-        Update Your <span className="text-yellow-300">Blog</span> 
+        Update Your <span className="text-yellow-300">Blog</span>
       </h1>
-      <div className=" lg:w-10/12 mx-auto">
-        <form
-          onSubmit={handleUpdateBlog}
-          className="space-y-4  rounded-xl lg:p-10 p-4"
-        >
-          <div className="flex flex-col gap-4 justify-between">
-            <div className="">
-              <label className="label">
-                <span className="text-base label-text">Title</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Enter Blog Title"
-                defaultValue={title}
-                name="title"
-                className="w-full mt-2 input input-bordered"
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Category</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Blog Category"
-                name="category"
-                defaultValue={category}
-                className="w-full  mt-2 input input-bordered"
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Author</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Author Name"
-                name="author"
-                defaultValue={author}
-                className="w-full  mt-2 input input-bordered"
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Published Date</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Published Date"
-                name="publishedAt"
-                defaultValue={publishedAt}
-                className="w-full  mt-2 input input-bordered"
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Introduction</span>
-              </label>
-              <textarea
-                placeholder="Enter Blog Introduction"
-                name="introduction"
-                defaultValue={introduction}
-                className="w-full  mt-2 input input-bordered"
-                rows="4"
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Body</span>
-              </label>
-              <textarea
-                placeholder="Enter Blog Body"
-                name="body"
-                defaultValue={body}
-                className="w-full  mt-2 input input-bordered"
-                rows="6"
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Conclusion</span>
-              </label>
-              <textarea
-                placeholder="Enter Blog Conclusion"
-                name="conclusion"
-                defaultValue={conclusion}
-                className="w-full  mt-2 input input-bordered"
-                rows="4"
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Short Description</span>
-              </label>
-              <textarea
-                placeholder="Enter Short Description"
-                name="short_description"
-                defaultValue={short_description}
-                className="w-full  mt-2 input input-bordered"
-                rows="2"
-              />
-            </div>
-            <div>
-              <label className="label">
-                <span className="text-base label-text">Image URL</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Enter Image URL"
-                name="imageURL"
-                defaultValue={image}
-                className="w-full  mt-2 input input-bordered"
-              />
-              {image && (
-                <img
-                  src={image}
-                  alt="Current Blog Image"
-                  className="mt-4 mb-4 w-96 mx-auto h-60 rounded-lg"
-                />
-              )}
-            </div>
+
+      <div className="lg:w-10/12 mx-auto">
+        <form onSubmit={handleUpdateBlog} className="space-y-4 rounded-xl lg:p-10 p-4">
+          {/* Title */}
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Title</span>
+            </label>
+            <ReactQuill 
+              theme="snow" 
+              value={title} 
+              onChange={setTitle} 
+              modules={quillModules}
+              formats={quillFormats}
+            />
           </div>
 
-          
+          {/* Category */}
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Category</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Blog Category"
+              name="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full mt-2 input input-bordered"
+              required
+            />
+          </div>
+
+          {/* Author */}
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Author</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Author Name"
+              name="author"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              className="w-full mt-2 input input-bordered"
+              required
+            />
+          </div>
+
+          {/* Published Date */}
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Published Date</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Published Date"
+              name="publishedAt"
+              value={publishedAt}
+              onChange={(e) => setPublishedAt(e.target.value)}
+              className="w-full mt-2 input input-bordered"
+              required
+            />
+          </div>
+
+          {/* Introduction */}
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Introduction</span>
+            </label>
+            <ReactQuill 
+              theme="snow" 
+              value={introduction} 
+              onChange={setIntroduction} 
+              modules={quillModules}
+              formats={quillFormats}
+            />
+          </div>
+
+          {/* Body */}
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Body</span>
+            </label>
+            <ReactQuill 
+              theme="snow" 
+              value={body} 
+              onChange={setBody} 
+              modules={quillModules}
+              formats={quillFormats}
+            />
+          </div>
+
+          {/* Conclusion */}
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Conclusion</span>
+            </label>
+            <ReactQuill 
+              theme="snow" 
+              value={conclusion} 
+              onChange={setConclusion} 
+              modules={quillModules}
+              formats={quillFormats}
+            />
+          </div>
+
+          {/* Short Description */}
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Short Description</span>
+            </label>
+            <ReactQuill 
+              theme="snow" 
+              value={shortDescription} 
+              onChange={setShortDescription} 
+              modules={quillModules}
+              formats={quillFormats}
+            />
+          </div>
+
+          {/* Image URL */}
+          <div>
+            <label className="label">
+              <span className="text-base label-text">Image URL</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Image URL"
+              name="imageURL"
+              defaultValue={image}
+              className="w-full mt-2 input input-bordered"
+              required
+            />
+            {image && (
+              <img
+                src={image}
+                alt="Current Blog Image"
+                className="mt-4 mb-4 w-96 mx-auto h-60 rounded-lg"
+              />
+            )}
+          </div>
 
           <input
             type="submit"
-            value="Update "
+            value="Update"
             className="btn py-2 w-full text-xl bg-yellow-400 hover:bg-yellow-300 duration-300 text-white"
           />
         </form>
@@ -234,67 +273,43 @@ const UpdateBlog = () => {
 
       <Link to="/">
         <div className="text-center">
-          <button className="btn bg-gray-200 px-4 py-2 hover:bg-gray-300 duration-300">Go To Home</button>
+          <button className="btn bg-gray-200 px-4 py-2 hover:bg-gray-300 duration-300">
+            Go To Home
+          </button>
         </div>
       </Link>
 
       {/* Success Modal */}
-      <div
-        className={`${
-          successModalOpen ? "fixed z-10 inset-0 overflow-y-auto" : "hidden"
-        }`}
-        aria-labelledby="modal-title"
-        role="dialog"
-        aria-modal="true"
+      <Modal
+        show={successModalOpen}
+        onClose={handleSuccessModalClose}
       >
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="fixed inset-0 bg-black opacity-30"></div>
-          <div className="bg-white rounded-lg p-6 mx-auto z-20">
-            <h3 className="text-lg font-bold" id="modal-title">
-              Success!
-            </h3>
-            <p className="mt-2">Blog Updated Successfully!</p>
-            <div className="mt-4 flex justify-end">
-              <button
-                type="button"
-                className="btn"
-                onClick={handleSuccessModalClose}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+        <Modal.Header>Success!</Modal.Header>
+        <Modal.Body>
+          <p>Your blog has been successfully updated!</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={handleSuccessModalClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       {/* Error Modal */}
-      <div
-        className={`${
-          errorModalOpen ? "fixed z-10 inset-0 overflow-y-auto" : "hidden"
-        }`}
-        aria-labelledby="modal-title-error"
-        role="dialog"
-        aria-modal="true"
+      <Modal
+        show={errorModalOpen}
+        onClose={() => setErrorModalOpen(false)}
       >
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="fixed inset-0 bg-black opacity-30"></div>
-          <div className="bg-white rounded-lg p-6 mx-auto z-20">
-            <h3 className="text-lg font-bold" id="modal-title-error">
-              Error!
-            </h3>
-            <p className="mt-2">Failed to update the blog.</p>
-            <div className="mt-4 flex justify-end">
-              <button
-                type="button"
-                className="btn"
-                onClick={() => setErrorModalOpen(false)}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+        <Modal.Header>Error</Modal.Header>
+        <Modal.Body>
+          <p>There was an error updating your blog. Please try again.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={() => setErrorModalOpen(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* styles.css */
+
+/* Style for unordered lists inside blog content */
+.blog-content ul {
+    @apply list-disc pl-5 mb-4; /* Tailwind classes */
+  }
+  
+  /* Style for ordered lists inside blog content */
+  .blog-content ol {
+    @apply list-decimal pl-5 mb-4; /* Tailwind classes */
+  }
+  
+  /* Ensure that the list items are displayed correctly inside blog content */
+  .blog-content li {
+    @apply mb-1; /* Add some margin for spacing between list items */
+  }
+  
+  /* Ensure that alignment classes work correctly */
+  .quill-align-left {
+    text-align: left;
+  }
+  
+  .quill-align-center {
+    text-align: center;
+  }
+  
+  .quill-align-right {
+    text-align: right;
+  }
+  
+  .quill-align-justify {
+    text-align: justify;
+  }
+  
+  /* You may also want to ensure these elements have margin */
+  .text-lg {
+    margin-bottom: 1rem; /* or adjust as needed */
+  }
+  
