@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
-import { Avatar, Dropdown, Navbar,Button } from "flowbite-react";
+import { Avatar, Dropdown, Navbar, Button } from "flowbite-react";
 import { AuthContext } from "./../../../Providers/AuthProvider";
 
 const Header = () => {
@@ -8,6 +8,9 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [searchQuery, setSearchQuery] = useState(""); // State to hold search input
   const navigate = useNavigate();
+
+  // Debugging line to check the user object
+  console.log(user); // Check if photoURL is present
 
   const handleSignOut = () => {
     logOut()
@@ -28,7 +31,7 @@ const Header = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <Navbar className="bg-gray-200 shadow-xl p-6">
         {/* Logo and Brand */}
         <Navbar.Brand>
@@ -40,19 +43,13 @@ const Header = () => {
         </Navbar.Brand>
 
         {/* Navbar Links */}
-        <div className="">
-          <Navbar.Collapse className=" uppercase lg:ml-10">
+        <div>
+          <Navbar.Collapse className="uppercase lg:ml-10">
             <Link to="/">Home</Link>
             <Link to="/blogPage">Blogs</Link>
             <Link to="/about">About</Link>
-            
-            
           </Navbar.Collapse>
         </div>
-    
-        
-
-        
 
         {/* Avatar and Dropdown for User Menu */}
         <div className="flex items-center gap-2">
@@ -94,48 +91,44 @@ const Header = () => {
                   </span>
                 </Dropdown.Header>
                 <div className="lg:hidden">
-                <Link to="/">
-                  <Dropdown.Item>Home</Dropdown.Item>
-                </Link>
-                <Link to="/blogPage">
-                  <Dropdown.Item>Blogs</Dropdown.Item>
-                </Link>
-                <Link to="/about">
-                  <Dropdown.Item>About</Dropdown.Item>
-                </Link>
+                  <Link to="/">
+                    <Dropdown.Item>Home</Dropdown.Item>
+                  </Link>
+                  <Link to="/blogPage">
+                    <Dropdown.Item>Blogs</Dropdown.Item>
+                  </Link>
+                  <Link to="/about">
+                    <Dropdown.Item>About</Dropdown.Item>
+                  </Link>
                 </div>
                 <Link to="/myblogs">
-                  {" "}
                   <Dropdown.Item>My Blogs</Dropdown.Item>
                 </Link>
-
-                <Link to="/addblog"> <Dropdown.Item>Add Blog</Dropdown.Item></Link>
-
-                
+                <Link to="/addblog">
+                  <Dropdown.Item>Add Blog</Dropdown.Item>
+                </Link>
                 <Dropdown.Divider />
                 <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
               </>
             ) : (
               <>
-              <div className="lg:hidden">
-                <Link to="/">
-                  <Dropdown.Item>Home</Dropdown.Item>
-                </Link>
-                <Link to="/blogPage">
-                  <Dropdown.Item>Blogs</Dropdown.Item>
-                </Link>
-                <Link to="/about">
-                  <Dropdown.Item>About</Dropdown.Item>
-                </Link>
+                <div className="lg:hidden">
+                  <Link to="/">
+                    <Dropdown.Item>Home</Dropdown.Item>
+                  </Link>
+                  <Link to="/blogPage">
+                    <Dropdown.Item>Blogs</Dropdown.Item>
+                  </Link>
+                  <Link to="/about">
+                    <Dropdown.Item>About</Dropdown.Item>
+                  </Link>
                 </div>
                 <Link to="/login">
                   <Dropdown.Item>Login</Dropdown.Item>
                 </Link>
-
                 <Link to="/register">
                   <Dropdown.Item>Register</Dropdown.Item>
                 </Link>
-                
               </>
             )}
           </Dropdown>
